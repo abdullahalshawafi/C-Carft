@@ -1,0 +1,20 @@
+<%- include('layouts/header') %>
+
+<div class="resend-confirmation-form-container">
+    <form action="/user/resend/confirmation" method="POST">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Didn't recieve an email?</h1>
+        <%- messages('partials/messages', locals) %>
+        <div class="form-group input-group-sm mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="email"
+                placeholder="Please enter your email again">
+        </div>
+        <button type="submit" class="btn btn-dark btn-block">Resend</button>
+    </form>
+</div>
+
+<div class="hr">
+    <hr>
+</div>
+
+<%- include('layouts/footer') %>

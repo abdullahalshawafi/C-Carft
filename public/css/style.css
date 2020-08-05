@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #313131;
+}
+
+a {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.cover {
+  height: 100vh;
+  background-color: #313131;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover-content {
+  width: 50vw;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 54px;
+}
+
+.our-courses-header,
+.syllabus-header,
+.enrolled-courses-header {
+  background: #0a6d94;
+}
+
+.our-courses-header h1,
+.syllabus-header h1,
+.enrolled-courses-header h1 {
+  padding: 5vh 0 0 10vw;
+  margin: 0;
+  color: white;
+}
+
+.enrolled-courses-header h2 {
+  padding: 5vh 0 0 10vw;
+  margin: 0;
+  color: white;
+  margin-bottom: 5vh;
+}
+
+.No-enrolled-courses {
+  text-align: center;
+  margin: 5vh;
+  color: white;
+}
+
+.courses-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0a6d94;
+}
+
+.course-container,
+.profile-container {
+  margin-top: 54px;
+  min-height: 100vh;
+  background-color: #313131;
+}
+
+.section1 {
+  display: flex;
+  justify-content: center;
+}
+
+.section2 {
+  background-color: #0a6d94;
+}
+
+.row {
+  margin: 0;
+}
+
+.card {
+  width: 90%;
+  position: static;
+  flex-direction: row;
+  margin: 5vh;
+}
+
+.card img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px 60px 15px 20px;
+}
+
+.session-div {
+  text-align: center;
+  padding: 1.25rem;
+}
+
+.card ul li {
+  margin-top: 10px;
+}
+
+.card p {
+  text-align: justify;
+}
+
+.contact-us-form-container,
+.register-form-container,
+.login-form-container,
+.edit-profile-form-container,
+.confirmation-form-container,
+.resend-confirmation-form-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #313131;
+}
+
+.contact-us-form-container form,
+.register-form-container form,
+.login-form-container form,
+.edit-profile-form-container form,
+.confirmation-form-container form,
+.confirmation-form-container>div,
+.resend-confirmation-form-container form {
+  margin-top: 69px;
+  margin-bottom: 15px;
+  width: 27%;
+  background-color: #0a6d94;
+  padding: 4vh 1vw;
+  color: white;
+  border-radius: 5px;
+}
+
+.form-group>label {
+  margin-bottom: 0;
+}
+
+.list-group {
+  margin: 79px 0 25px 0;
+}
+
+.list-group-item>button {
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 90%;
+}
+
+.sessions-dropdowns>div {
+  width: 90%;
+}
+
+#userImageLabel:hover {
+  color: #555;
+}
+
+.user-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-courses-primary-buttons-container a {
+  margin-bottom: 10px;
+}
+
+.hr {
+  background-color: #313131;
+}
+
+.hr hr {
+  width: 90%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.footer {
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #313131;
+  color: white;
+}
+
+.footer .social-media {
+  padding-bottom: 3vh;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer img {
+  width: 25px;
+  height: 25px;
+  margin: 3px;
+}
+
+@media only screen and (max-width: 991px) {
+
+  .contact-us-form-container form,
+  .register-form-container form,
+  .login-form-container form,
+  .edit-profile-form-container form,
+  .confirmation-form-container form,
+  .confirmation-form-container>div,
+  .resend-confirmation-form-container form {
+    width: 35%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .contact-us-form-container form,
+  .register-form-container form,
+  .login-form-container form,
+  .edit-profile-form-container form,
+  .confirmation-form-container form,
+  .confirmation-form-container>div,
+  .resend-confirmation-form-container form {
+    width: 45%;
+  }
+
+  .course-details-card,
+  .profile-details-card {
+    flex-direction: column;
+  }
+
+  .course-details-card img,
+  .profile-details-card img {
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+
+  .contact-us-form-container form,
+  .register-form-container form,
+  .login-form-container form,
+  .edit-profile-form-container form,
+  .confirmation-form-container form,
+  .confirmation-form-container>div,
+  .resend-confirmation-form-container form {
+    width: 60%;
+  }
+}

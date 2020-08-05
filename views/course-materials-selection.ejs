@@ -1,0 +1,39 @@
+<%- include('layouts/header') %>
+
+<div class="container">
+    <div class="list-group">
+        <% if (selection === 'sessions') { %>
+        <div class="list-group-item dropdown sessions-dropdowns">
+            <button class="btn-block dropdown-toggle d-flex justify-content-between align-items-center" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Slides
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <% course.Syllabus.forEach((session, index) => { %>
+                <a class="dropdown-item" hred="/course/<%= course._id %>/material/Session <%= index + 1 %>')">Session
+                    <%= index + 1 %> | <%= session.Subject %></a>
+                <% }); %>
+            </div>
+        </div>
+        <div class="list-group-item dropdown sessions-dropdowns">
+            <button class="btn-block dropdown-toggle d-flex justify-content-between align-items-center" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Codes
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <% } else if (selection === 'assignments') { %>
+        <% } else if (selection === 'project') { %>
+        <% } %>
+    </div>
+</div>
+
+<div class="hr">
+    <hr>
+</div>
+
+<%- include('layouts/footer') %>

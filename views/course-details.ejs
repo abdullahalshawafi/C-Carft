@@ -1,0 +1,130 @@
+<%- include('layouts/header') %>
+
+<div class="course-container">
+    <section class="section1">
+        <div class="card course-details-card">
+            <% if (course.instructors.length === 1) { %>
+            <img class="card-img-left" src="/images/instructors/<%= course.instructors %>.jpg" alt="instructor">
+            <% } else { %>
+            <img class="card-img-left" src="/images/courses/<%= course.image %>.jpg" alt="course">
+            <% } %>
+
+            <% if (course.instructors.length === 1) { %>
+            <div class="card-body">
+                <h2 class="card-title"><%= course.Name %></h2>
+                <ul>
+                    <li class="card-text"><b>Instructor:</b> <%= course.instructors[0] %></li>
+                    <li class="card-text"><b>Start date:</b> <%= course.StartDate %></li>
+                    <li class="card-text"><b>End date:</b> <%= course.EndDate %></li>
+                    <li class="card-text"><b>Number of sessions:</b> <%= course.SessionNumber %></li>
+                    <li class="card-text"><b>Schedule:</b> <%= course.Schedule %></li>
+                </ul>
+                <% if (typeof enrolled !== 'undefined' && enrolled) { %>
+                <div class="d-flex justify-content-between">
+                    <a href="/course/<%= course._id %>/material" class="btn btn-primary">View course material</a>
+                    <a href="/course/<%= course._id %>/unenroll" class="btn btn-danger">Unenroll course</a>
+                </div>
+                <% } else { %>
+                <a href="/course/<%= course._id %>/enroll" class="btn btn-primary">Enroll</a>
+                <% } %>
+            </div>
+            <% } else { %>
+            <div class="card-body">
+                <h2 class="card-title"><%= course.Name %></h2>
+                <div class="row">
+                    <div class="col-lg col-md-12 col-sm-6">
+                        <ul>
+                            <li class="card-text"><big><b>Instructors:</b></big>
+                                <ul>
+                                    <% course.instructors.forEach(instructor => { %>
+                                    <div>
+                                        <img src="/images/instructors/<%= instructor %>.jpg" alt="instructor"
+                                            style="width: 50px; height: 50px; margin: 10px 0;">
+                                        <li class="card-text" style="display: inline;"><%= instructor %>
+                                        </li>
+                                    </div>
+                                    <% }); %>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg col-md-12 col-sm-6 align-self-center">
+                        <ul>
+                            <li class="card-text"><b>Start date:</b> <%= course.StartDate %></li>
+                            <li class="card-text"><b>End date:</b> <%= course.EndDate %></li>
+                            <li class="card-text"><b>Number of sessions:</b> <%= course.SessionNumber %></li>
+                            <li class="card-text"><b>Schedule:</b> <%= course.Schedule %></li>
+                        </ul>
+                    </div>
+                </div>
+                <% if (typeof enrolled !== 'undefined' && enrolled) { %>
+                <div class="d-flex justify-content-between">
+                    <a href="/course/<%= course._id %>/material" class="btn btn-primary">View course material</a>
+                    <a href="/course/<%= course._id %>/unenroll" class="btn btn-danger">Unenroll course</a>
+                </div>
+                <% } else { %>
+                <a href="/course/<%= course._id %>/enroll" class="btn btn-primary">Enroll</a>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="section2">
+        <div class="syllabus-header">
+            <h1>Syllabus</h1>
+        </div>
+        <% let length  = course.Syllabus.length; %>
+        <% if (OddSyllabus) length--; %>
+        <% let i; for(i = 0; i < length; i += 2) { %>
+        <div class="row justify-content-center">
+            <div class="card col-xl col-lg-10">
+                <div class="d-flex justify-content-center align-items-center session-div">
+                    <h1 class="card-title font-weight-light">Session <br> <%= i + 1 %></h1>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title"><%= course.Syllabus[i].Subject %></h2>
+                    <ul>
+                        <% course.Syllabus[i].Outline.forEach(title => { %>
+                        <li class="card-text"><%= title %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+            <% if (typeof course.Syllabus[i + 1] === 'undefined') break; %>
+            <div class="card col-xl col-lg-10">
+                <div class="d-flex justify-content-center align-items-center session-div">
+                    <h1 class="card-title font-weight-light">Session <br> <%= i + 2 %></h1>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title"><%= course.Syllabus[i + 1].Subject %></h2>
+                    <ul>
+                        <% course.Syllabus[i + 1].Outline.forEach(title => { %>
+                        <li class="card-text"><%= title %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% if (OddSyllabus) { %>
+        <div class="row justify-content-center">
+            <div class="card col-xl-6 col-lg-10">
+                <div class="d-flex justify-content-center align-items-center session-div">
+                    <h1 class="card-title font-weight-light">Session <br> <%= i + 1 %></h1>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title"><%= course.Syllabus[i].Subject %></h2>
+                    <ul>
+                        <% course.Syllabus[i].Outline.forEach(title => { %>
+                        <li class="card-text"><%= title %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </section>
+</div>
+
+<%- include('layouts/footer') %>

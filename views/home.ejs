@@ -1,0 +1,28 @@
+<%- include('layouts/header') %>
+
+<div class="cover">
+    <div class="cover-content">
+        <h1>C-Craft Student Activity</h1>
+        <p>It is started by the students of Computer Engineering Department at Cairo University.<br>It is conecntrated
+            on helping people to know more about computers world, and in teaching famous subjects and technologies.
+        </p>
+    </div>
+</div>
+
+<div class="our-courses-header">
+    <h1>Our Courses</h1>
+</div>
+<div class="courses-container">
+    <% courses.forEach(course => { %>
+    <div class="card course-details-card">
+        <img class="card-img-left" src="/images/courses/<%= course.image %>.jpg" alt="<%= course.Name %>">
+        <div class="card-body">
+            <h2 class="card-title"><%= course.Name %></h2>
+            <p class="card-text"><%= course.Description %></p>
+            <a href="/course/<%= course._id %>" class="btn btn-primary">View Course</a>
+        </div>
+    </div>
+    <% }); %>
+</div>
+
+<%- include('layouts/footer') %>

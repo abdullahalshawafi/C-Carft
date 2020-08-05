@@ -1,0 +1,76 @@
+<%- include('layouts/header') %>
+
+<div class="profile-container">
+    <section class="section1">
+        <div class="card profile-details-card">
+            <% if (user.Image) { %>
+            <img class="card-img-left" src="/images/profile pictures/<%= user._id %>/<%= user.Image %>"
+                alt="user image">
+            <% } else { %>
+            <img class="card-img-left" src="/images/profile pictures/default-<%= user.Gender %>.jpg" alt="user image">
+            <% } %>
+            <div class="card-body">
+                <h2 class="card-title"><%= user.Name %></h2>
+                <ul>
+                    <li class="card-text">
+                        <p><%= user.Bio %></p>
+                    </li>
+                    <% if (user.Courses.length === 0) { %>
+                    <li class="card-text"><b>Courses:</b> You are not enrolled in any courses :(</li>
+                    <% } else if (user.Courses.length === 1) { %>
+                    <li class="card-text"><b>Courses:</b> <%= user.Courses[0].Name %></li>
+                    <% } else { %>
+                    <li class="card-text"><big><b>Courses:</b></big><br>
+                        <ul>
+                            <% user.Courses.forEach(course => { %>
+                            <li class="card-text"><%= course.Name %></li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                    <% } %>
+                    <br>
+                    <% if (canEdit) { %>
+                    <a href="/profile/<%= user.Slug %>/edit-profile" class="btn btn-warning">Edit Profile</a>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section2">
+        <div class="enrolled-courses-header">
+            <h2>Enrolled courses</h2>
+        </div>
+        <div class="d-flex align-items-center flex-column">
+            <% if (user.Courses.length) { %>
+            <% user.Courses.forEach(course => { %>
+            <div class="card course-details-card">
+                <img class="card-img-left" src="/images/courses/<%= course.image %>.jpg" alt="<%= course.Name %>" style="width: 150px;
+                height: 150px;">
+                <div class="card-body">
+                    <h2 class="card-title"><%= course.Name %></h2>
+                    <p class="card-text"><b>Classroom code: </b><%= course.classroom %></p>
+                    <br>
+                    <div class="d-flex justify-content-between">
+                        <div class="profile-courses-primary-buttons-container">
+                            <a href="/course/<%= course._id %>" class="btn btn-primary">View Course Details</a>
+                            <a href="/course/<%= course._id %>/materials" class="btn btn-primary">View Course
+                                Materials</a>
+                        </div>
+                        <div>
+                            <a href="/course/<%= course._id %>/unenroll" class="btn btn-danger">Unenroll Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+            <% } else { %>
+            <div class="No-enrolled-courses">
+                <h1>There are no enrolled courses</h1>
+            </div>
+            <% } %>
+        </div>
+    </section>
+</div>
+
+<%- include('layouts/footer') %>

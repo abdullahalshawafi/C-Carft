@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">C-Craft</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Our Courses
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <% courses.forEach(course => { %>
+                            <a class="dropdown-item <% if (title === course.Name) { %>active<% } %>"
+                                href="/course/<%= course._id %>"><%= course.Name %></a>
+                            <% }); %>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <% if (title === 'Contact Us') { %>active<% } %>"
+                            href="/user/contact-us">Contact
+                            Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <% if (!user) { %>
+                    <li class="nav-item">
+                        <a class="nav-link <% if (title === 'Register') { %>active<% } %>"
+                            href="/user/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <% if (title === 'Log In') { %>active<% } %>" href="/user/login">Log In</a>
+                    </li>
+                    <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link <% if (title === 'Profile') { %>active<% } %>"
+                            href="/profile/<%= user.Slug %>">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <% if (title === 'Log In') { %>active<% } %>" href="/user/logout">Log Out</a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>

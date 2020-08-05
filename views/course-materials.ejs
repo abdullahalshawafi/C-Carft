@@ -1,0 +1,17 @@
+<%- include('layouts/header') %>
+
+<div class="container">
+    <div class="list-group">
+        <a href="/course/<%= course._id %>/material/sessions"
+            class="list-group-item list-group-item-action">Sessions</a>
+        <a href="/course/<%= course._id %>/material/assignments"
+            class="list-group-item list-group-item-action">Assignments</a>
+        <a href="/course/<%= course._id %>/material/project" class="list-group-item list-group-item-action">Project</a>
+    </div>
+</div>
+
+<div class="hr">
+    <hr>
+</div>
+
+<%- include('layouts/footer') %>
