@@ -7,6 +7,8 @@ const passport = require('passport');
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
 
+console.log('Hello');
+
 // Importing Courses model
 const Courses = require('./models/Course');
 
