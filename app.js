@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -6,8 +7,6 @@ const session = require('express-session');
 const passport = require('passport');
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
-
-console.log('Hello');
 
 // Importing Courses model
 const Courses = require('./models/Course');
