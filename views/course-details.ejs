@@ -78,9 +78,9 @@
         <% if (OddSyllabus) length--; %>
         <% let i; for(i = 0; i < length; i += 2) { %>
         <div class="row justify-content-center">
-            <div class="card col-xl col-lg-10">
+            <div class="card sessions-card col-xl col-lg-10">
                 <div class="d-flex justify-content-center align-items-center session-div">
-                    <h1 class="card-title font-weight-light">Session <br> <%= i + 1 %></h1>
+                    <h1 class="card-title font-weight-light">Session <br> <b><%= i + 1 %></b></h1>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title"><%= course.Syllabus[i].Subject %></h2>
@@ -92,9 +92,9 @@
                 </div>
             </div>
             <% if (typeof course.Syllabus[i + 1] === 'undefined') break; %>
-            <div class="card col-xl col-lg-10">
+            <div class="card sessions-card col-xl col-lg-10">
                 <div class="d-flex justify-content-center align-items-center session-div">
-                    <h1 class="card-title font-weight-light">Session <br> <%= i + 2 %></h1>
+                    <h1 class="card-title font-weight-light">Session <br> <b><%= i + 2 %></b></h1>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title"><%= course.Syllabus[i + 1].Subject %></h2>
@@ -109,9 +109,9 @@
         <% } %>
         <% if (OddSyllabus) { %>
         <div class="row justify-content-center">
-            <div class="card col-xl-6 col-lg-10">
+            <div class="card sessions-card col-xl-6 col-lg-10">
                 <div class="d-flex justify-content-center align-items-center session-div">
-                    <h1 class="card-title font-weight-light">Session <br> <%= i + 1 %></h1>
+                    <h1 class="card-title font-weight-light">Session <br> <b><%= i + 1 %></b></h1>
                 </div>
                 <div class="card-body">
                     <h2 class="card-title"><%= course.Syllabus[i].Subject %></h2>

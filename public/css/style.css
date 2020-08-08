@@ -290,6 +290,10 @@ header {
   .confirmation-form-container form,
   .confirmation-form-container>div,
   .resend-confirmation-form-container form {
-    width: 60%;
+    width: 90%;
+  }
+
+  .sessions-card {
+    flex-direction: column;
   }
 }
