@@ -6,6 +6,7 @@ const session = require('express-session');
 const passport = require('passport');
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
+require('dotenv/config');
 
 // Importing Courses model
 const Courses = require('./models/Course');
@@ -17,7 +18,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // Connecting to MongoDB
-mongoose.connect('mongodb://localhost/C-Craft', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {

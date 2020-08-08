@@ -49,7 +49,7 @@
                     <% } else { %>
                     <li class="nav-item">
                         <a class="nav-link <% if (title === 'Profile') { %>active<% } %>"
-                            href="/profile/<%= user.Slug %>">Profile</a>
+                            href="/profile/<%= user._id %>">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <% if (title === 'Log In') { %>active<% } %>" href="/user/logout">Log Out</a>

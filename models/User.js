@@ -7,10 +7,6 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    Slug: {
-        type: String,
-        default: ""
-    },
     Email: {
         type: String,
         required: true
