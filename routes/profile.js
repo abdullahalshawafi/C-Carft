@@ -12,7 +12,7 @@ router.get('/:user_id', loggedIn, async (req, res) => {
         res.render('user-profile', {
             title: user.Name,
             user: user,
-            canEdit: req.user._id === req.params.user_id
+            canEdit: req.user._id == req.params.user_id
         });
     } catch (err) {
         return console.log(err);
