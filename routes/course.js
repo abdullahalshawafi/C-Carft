@@ -94,14 +94,14 @@ router.get('/:course_id/material/:user_selection', loggedIn, async (req, res) =>
 });
 
 // GET course materials page upon user selection (session - assignments - project)
-router.get('/:course_id/material/:user_selection/:file', loggedIn, async (req, res) => {
+router.get('/:course_id/material/:file_type/:file', loggedIn, async (req, res) => {
     try {
         const course = await Courses.findById(req.params.course_id);
         if (!course) return res.redirect('/');
 
         let enrolled = false;
         if (typeof req.user !== 'undefined') {
-            let user = await User.findById(req.user._id).populate('Courses');
+            const user = await User.findById(req.user._id).populate('Courses');
             for (let i = 0; i < user.Courses.length; i++) {
                 if (course.Name === user.Courses[i].Name) {
                     enrolled = true;
@@ -110,10 +110,10 @@ router.get('/:course_id/material/:user_selection/:file', loggedIn, async (req, r
             }
         }
         if (enrolled) {
-            var selectedFile = `public/documents/${req.params.user_selection}/${req.params.file}`;
-            fs.readFile(selectedFile, function (err, data) {
+            const selectedFile = `public/${req.params.file_type}/${req.params.file}`;
+            fs.readFile(selectedFile, (err, data) => {
                 if (err) return console.log(err);
-                res.contentType('application/pptx');
+                res.contentType(req.params.file);
                 res.send(data);
             });
         } else {

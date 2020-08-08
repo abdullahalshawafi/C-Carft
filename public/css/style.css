@@ -177,16 +177,19 @@ header {
   margin: 79px 0 25px 0;
 }
 
+.show[aria-labelledby="dropdownMenuButton"] {
+  transform: translate3d(0px, 36px, 0px) !important;
+}
+
 .list-group-item>button {
   border: none;
   outline: none;
   background-color: #ffffff;
   cursor: pointer;
-  width: 90%;
 }
 
 .sessions-dropdowns>div {
-  width: 90%;
+  width: 100%;
 }
 
 #userImageLabel:hover {
