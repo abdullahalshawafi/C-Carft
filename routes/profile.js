@@ -23,7 +23,7 @@ router.get('/:user_id', loggedIn, async (req, res) => {
 router.get('/:user_id/edit-profile', loggedIn, async (req, res) => {
     try {
         const user = await User.findById(req.params.user_id).populate('Courses');
-        if (!user || req.user._id !== req.params.user_id) return res.redirect('/');
+        if (!user || req.user._id != req.params.user_id) return res.redirect('/');
 
         res.render('edit-profile', {
             title: user.Name,
