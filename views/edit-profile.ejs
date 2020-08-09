@@ -3,6 +3,7 @@
 <div class="edit-profile-form-container">
   <form action="/profile/<%= user._id %>/edit-profile" method="POST" enctype="multipart/form-data">
     <h1 class="h3 mb-3 font-weight-normal text-center">Edit Profile</h1>
+    <p class="mb-3 font-weight-normal text-center reset-profile-picture">Reset profile picture</p>
     <div class="d-flex align-items-center flex-column">
       <% if (user.Image) { %>
       <img class="user-image" src="/images/profile pictures/<%= user._id %>/<%= user.Image %>" alt="user image">

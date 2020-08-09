@@ -192,7 +192,12 @@ header {
   width: 100%;
 }
 
-#userImageLabel:hover {
+.reset-profile-picture {
+  cursor: pointer;
+}
+
+#userImageLabel:hover,
+.reset-profile-picture:hover {
   color: #555;
 }
 
