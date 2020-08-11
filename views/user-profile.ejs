@@ -4,8 +4,7 @@
     <section class="section1">
         <div class="card profile-details-card">
             <% if (user.Image) { %>
-            <img class="card-img-left" src="/images/profile pictures/<%= user._id %>/<%= user.Image %>"
-                alt="user image">
+            <img class="card-img-left" src="/images/profile pictures/<%= user.Image %>" alt="user image">
             <% } else { %>
             <img class="card-img-left" src="/images/profile pictures/default-<%= user.Gender %>.jpg" alt="user image">
             <% } %>

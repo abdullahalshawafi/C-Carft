@@ -39,7 +39,7 @@ router.post('/:user_id/edit-profile', [
     body('Name', 'You must enter a name').notEmpty()
 ], loggedIn, async (req, res) => {
     const errors = validationResult(req).errors;
-    let imageName = (req.files !== null) ? req.files.image.name : req.user.Image;
+    let imageName = (req.files !== null) ? Date.now().toString() + req.files.image.name : req.user.Image;
 
     if (req.files && !req.files.image.mimetype.includes('image/')) {
         errors.push({
@@ -63,12 +63,12 @@ router.post('/:user_id/edit-profile', [
 
         if (req.body.isReseted === 'true') {
             imageName = '';
-            const prevImagePath = `public/images/profile pictures/${user._id}/${user.Image}`;
+            const prevImagePath = `public/images/profile pictures/${user.Image}`;
             if (user.Image && user.Image !== imageName) fs.unlink(prevImagePath, () => { });
         } else if (req.files) {
             console.log(req.files);
-            const imagePath = `public/images/profile pictures/${user._id}/${imageName}`;
-            const prevImagePath = `public/images/profile pictures/${user._id}/${user.Image}`;
+            const imagePath = `public/images/profile pictures/${imageName}`;
+            const prevImagePath = `public/images/profile pictures/${user.Image}`;
 
             if (user.Image && user.Image !== imageName) {
                 fs.unlink(prevImagePath, () => req.files.image.mv(imagePath));

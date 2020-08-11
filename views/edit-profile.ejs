@@ -7,7 +7,7 @@
     <input type="hidden" id="reset-input" name="isReseted" value="false">
     <div class="d-flex align-items-center flex-column">
       <% if (user.Image) { %>
-      <img class="user-image" src="/images/profile pictures/<%= user._id %>/<%= user.Image %>" alt="user image">
+      <img class="user-image" src="/images/profile pictures/<%= user.Image %>" alt="user image">
       <% } else { %>
       <img class="user-image" src="/images/profile pictures/default-<%= user.Gender %>.jpg" alt="user image">
       <% } %>

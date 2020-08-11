@@ -95,7 +95,7 @@ app.get('/deleteAll', (req, res) => {
     require('./models/User').find({}, (err, users) => {
         if (err) return console.log(err);
         users.forEach(user => {
-            fs.rmdir(`public/images/profile pictures/${user._id}`, { recursive: true }, () => {
+            fs.unlink(`public/images/profile pictures/${user.Image}`, () => {
                 require('./models/User').findByIdAndRemove(user._id, err => {
                     if (err) return console.log(err);
                 });

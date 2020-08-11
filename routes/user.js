@@ -180,9 +180,6 @@ router.post('/confirmation/:token', async (req, res) => {
         user.isVerified = true;
         user = await user.save();
 
-        let imagePath = "public/images/profile pictures/" + user._id;
-        await mkdirp(imagePath);
-
         req.flash('success', 'The account has been verified. Please log in.');
         res.redirect('/user/login');
     } catch (err) {
