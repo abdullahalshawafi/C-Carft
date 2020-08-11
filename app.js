@@ -37,7 +37,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // express-session middleware
-app.use(session({ secret: 'secret cat', resave: true, saveUninitialized: true }));
+const MongoStore = require('connect-mongo')(session);
+app.use(session({
+    secret: 'secret cat',
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: db })
+}));
 
 // passport configuration
 require("./config/passport")(passport);
