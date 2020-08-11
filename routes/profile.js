@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const fs = require('fs');
-const path = require('path');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const loggedIn = require('../config/auth');
@@ -41,7 +40,6 @@ router.post('/:user_id/edit-profile', [
 ], loggedIn, async (req, res) => {
     const errors = validationResult(req).errors;
     let imageName = (req.files !== null) ? req.files.image.name : req.user.Image;
-    if (!imageName) imageName = `default-${req.user.Gender}`;
 
     if (req.files && !req.files.image.mimetype.includes('image/')) {
         errors.push({
@@ -63,15 +61,20 @@ router.post('/:user_id/edit-profile', [
     try {
         let user = await User.findById(req.params.user_id);
 
-        const imagePath = `public/images/profile pictures/${user._id}/${imageName}`;
-        const prevImagePath = `public/images/profile pictures/${user._id}/${user.Image}`;
+        if (req.body.isReseted === 'true') {
+            imageName = '';
+            const prevImagePath = `public/images/profile pictures/${user._id}/${user.Image}`;
+            if (user.Image && user.Image !== imageName) fs.unlink(prevImagePath, () => { });
+        } else if (req.files) {
+            console.log(req.files);
+            const imagePath = `public/images/profile pictures/${user._id}/${imageName}`;
+            const prevImagePath = `public/images/profile pictures/${user._id}/${user.Image}`;
 
-        if (user.Image && user.Image !== imageName) {
-            fs.unlink(prevImagePath, () => {
+            if (user.Image && user.Image !== imageName) {
+                fs.unlink(prevImagePath, () => req.files.image.mv(imagePath));
+            } else if (req.files) {
                 req.files.image.mv(imagePath);
-            });
-        } else if (user.Image !== `default-${req.user.Gender}`) {
-            req.files.image.mv(imagePath);
+            }
         }
 
         user = await User.findByIdAndUpdate(

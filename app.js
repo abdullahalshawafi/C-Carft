@@ -17,8 +17,12 @@ const app = express();
 // Setting the listening port
 const port = process.env.PORT || 8080;
 
+// Determining the enviroment
+const env = process.env.NODE_ENV || 'development';
+console.log(env);
+
 // Connecting to MongoDB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
+mongoose.connect((env === 'development') ? process.env.DB_LOCAL_CONNECTION : process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
