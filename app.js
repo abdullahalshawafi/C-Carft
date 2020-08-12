@@ -19,7 +19,6 @@ const port = process.env.PORT || 8080;
 
 // Determining the enviroment
 const env = process.env.NODE_ENV || 'development';
-console.log(env);
 
 // Connecting to MongoDB
 mongoose.connect((env === 'development') ? process.env.DB_LOCAL_CONNECTION : process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
